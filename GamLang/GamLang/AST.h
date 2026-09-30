@@ -57,7 +57,7 @@ struct BinaryExpr : Expr
 
 	std::string dump()
 	{
-		return left->dump() + " " + right->dump();
+		return left->dump() + " " + op + " " + right->dump();
 	}
 };
 
@@ -78,7 +78,7 @@ struct AssignmentStatement : Statement
 
 	std::string dump()
 	{
-		return "Type: " + type + " Id: " + id + " val: " + val->dump();
+		return "Type: " + type + " Id: " + id + " val: " + val->dump() + "\n";
 	}
 };
 
