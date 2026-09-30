@@ -30,6 +30,11 @@ int main()
         Parser p(tokens);
         auto ast = p.parse();
         std::cout << "AST generated" << std::endl;
+        for (std::size_t i = 0; i < ast.statements.size(); ++i)
+        {
+            std::cout << i << std::endl;
+            std::cout << ast.statements[i]->dump();
+        }
     }
     else
     {
