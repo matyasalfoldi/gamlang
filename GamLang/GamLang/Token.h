@@ -27,7 +27,9 @@ enum class TokenType
 
     Semicolon,
 
-    Empty
+    Empty,
+
+    End
 };
 
 class Token
@@ -59,7 +61,8 @@ const std::map<TokenType, std::string> type_map{
     {TokenType::LeftParen, "LeftParen"},
     {TokenType::RightParen, "RightParen"},
     {TokenType::DoubleQuote, "DoubleQuote"},
-    {TokenType::Semicolon, "Semicolon"}
+    {TokenType::Semicolon, "Semicolon"},
+    {TokenType::End, "$"}
 };
 
 inline std::ostream& operator<<(std::ostream& out, const Token& token)

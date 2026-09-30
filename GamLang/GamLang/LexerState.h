@@ -63,6 +63,13 @@ public:
         {
             state->handle(*this, c);
         }
+        // Add an end token for the parser
+        Token end;
+        end.line = tokens.back().line;
+        end.column = tokens.back().column;
+        end.text = "";
+        end.type = TokenType::End;
+        tokens.push_back(end);
     }
 
     void change_state(std::unique_ptr<LexerState> _state)
@@ -105,6 +112,11 @@ public:
     {
         std::cout << "Incorrect value: " << c << " after: " << current_part << std::endl;
         std::exit(1);
+    }
+
+    auto get_tokens()const
+    {
+        return tokens;
     }
 private:
     std::vector<Token> tokens;

@@ -8,6 +8,7 @@
 
 //#include "Lexer.h"
 #include "LexerState.h"
+#include "Parser.h"
 
 int main()
 {
@@ -25,6 +26,10 @@ int main()
         LexerImp lexer;
         lexer.create_tokens(file_contents);
         lexer.print_tokens();
+        auto tokens = lexer.get_tokens();
+        Parser p(tokens);
+        auto ast = p.parse();
+        std::cout << "AST generated" << std::endl;
     }
     else
     {
