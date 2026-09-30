@@ -9,6 +9,7 @@
 //#include "Lexer.h"
 #include "LexerState.h"
 #include "Parser.h"
+#include "SymbolTable.h"
 
 int main()
 {
@@ -30,10 +31,19 @@ int main()
         Parser p(tokens);
         auto ast = p.parse();
         std::cout << "AST generated" << std::endl;
+        
         for (std::size_t i = 0; i < ast.statements.size(); ++i)
         {
             std::cout << i << std::endl;
             std::cout << ast.statements[i]->dump();
+        }
+
+        SymbolTable st;
+        build_symbol_table(ast, st);
+        std::cout << "Symbol table created" << std::endl;
+        for (auto s : st.symbols)
+        {
+            std::cout << "key:" << s.first << " type:" << s.second.type << " name:" << s.second.name << std::endl;
         }
     }
     else
